@@ -1,0 +1,19 @@
+version: '2.1'
+networks:
+  grpc-router:
+    external:
+      name: grpcrouter_grpc-router
+services:
+  node:
+    image: node:9.3.0
+    entrypoint:
+      - node_modules/.bin/nodemon
+    command:
+      - server.js
+    working_dir: /code
+    env_file:
+      - .env
+    volumes:
+      - ./:/code
+    networks:
+      - grpc-router

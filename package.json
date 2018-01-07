@@ -26,5 +26,8 @@
     "object.values": "^1.0.3",
     "winston": "^2.2.0",
     "yargs": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

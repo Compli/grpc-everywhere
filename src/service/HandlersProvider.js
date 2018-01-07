@@ -29,6 +29,8 @@ class HandlersProvider {
         return (call, callback) => {
             let startTime = process.hrtime();
 
+            console.log(methodDescription);
+
             let promise = this.connector.send(
                 methodDescription,
                 JSON.stringify(call.request)
@@ -71,11 +73,15 @@ class HandlersProvider {
                     methodName: methodDescription.methodName
                 });
             }).catch((error) => {
-                this.logger.error(error, {
-                    packageName: methodDescription.packageName,
-                    serviceName: methodDescription.serviceName,
-                    methodName: methodDescription.methodName
-                });
+
+                console.log(error);
+                console.log(methodDescription);
+
+                // this.logger.error(error, {
+                //     packageName: methodDescription.packageName,
+                //     serviceName: methodDescription.serviceName,
+                //     methodName: methodDescription.methodName
+                // });
 
                 callback(error);
             });

@@ -4,8 +4,13 @@ require('object.values').shim();
 
 class ServiceDescription {
     constructor(serviceName, proto) {
+
+        console.log(serviceName);
+
         this.proto = proto;
         this.serviceName = serviceName;
+
+
         this.service = null;
         this.packageName = ServiceDescription.getPackageNameOfService(serviceName);
     }
@@ -34,7 +39,7 @@ class ServiceDescription {
             }
         }
 
-        if (node.name !== 'Client') {
+        if (node.name !== 'ServiceClient') {
             throw new Error('Service "' + serviceName + '" are not a service');
         }
 

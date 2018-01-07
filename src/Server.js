@@ -11,18 +11,14 @@ class Server {
      * @param {Object} config
      */
     constructor(config) {
+
         this.config = config;
-
-        this.logger = Server.createLogger();
-
-        grpc.setLogger(this.logger);
-        // grpc.setLogVerbosity(grpc.logVerbosity.INFO);
 
         this.grpcServer = new grpc.Server();
 
         this.services = [];
 
-        for (let serviceConfig of this.config.services) {
+        for (let serviceConfig of this.config) {
             this.addService(new Service(serviceConfig.name, serviceConfig));
         }
     }
@@ -33,7 +29,7 @@ class Server {
      * @returns {Promise}
      */
     start() {
-        let connectionString = `${this.config.host}:${this.config.port}`;
+        let connectionString = `${process.env.GRPC_HOST}:${process.env.GRPC_PORT}`;
 
         this.grpcServer.bind(
             connectionString,
@@ -47,21 +43,11 @@ class Server {
         return Promise.all(connectorsReadyPromises).then(() => {
             this.grpcServer.start();
 
-            asciify(' GRPC', {font: 'larry3d'}, (error, text) => {
-                console.log("\n\n" + text);
+            let servicesString = this.services.map((service) => {
+                return ' - ' + service.name;
+            }).join("\n");
 
-                asciify(' everywhere', {font: 'small'}, (error, text) => {
-                    console.log(text);
-
-                    let servicesString = this.services.map((service) => {
-                        return ' - ' + service.name;
-                    }).join("\n");
-
-                    console.log(`Loaded services:\n${servicesString}\n`);
-
-                    this.logger.info(`Listen ${connectionString}`);
-                });
-            });
+            console.log(`GRPC Loaded Services:\n${servicesString}\n`);
         }).catch((error) => {
             this.logger.error(error);
         });
@@ -101,21 +87,6 @@ class Server {
         );
 
         this.services.push(service);
-    }
-
-    /**
-     * @private
-     * @returns {winston.Logger}
-     */
-    static createLogger() {
-        return new winston.Logger({
-            transports: [
-                new winston.transports.Console({
-                    handleExceptions: true,
-                    timestamp: true
-                })
-            ]
-        });
     }
 }
 

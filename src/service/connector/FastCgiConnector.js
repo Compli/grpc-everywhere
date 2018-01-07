@@ -47,6 +47,7 @@ class FastCgiConnector {
 
         this.lastRequestPromise = new Promise((resolve, reject) => {
             this.client.request(cgiParams, (error, request) => {
+
                 if (error !== null) {
                     return reject(new ConnectorError(error));
                 }

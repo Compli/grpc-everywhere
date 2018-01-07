@@ -1,21 +1,13 @@
 "use strict";
 
-const yargs = require('yargs');
-const Server = require('src/Server');
+const Server = require('./src/Server');
+const loadConfig = require('./src/loadConfig');
 
-let argv = yargs.usage('Usage: $0 -c [configPath]')
-    .option('c', {
-        alias: 'config',
-        type: 'string',
-        default: 'config.yml',
-        describe: "Path to YAML config file"
-    })
-    .help('h')
-    .alias('h', 'help').argv;
+let config = loadConfig('config.yml');
 
-const loadConfig = require('src/loadConfig');
-
-let config = loadConfig(argv.config);
+if (!Array.isArray(config)) {
+    config = [config];
+}
 
 let server = new Server(config);
 server.start();

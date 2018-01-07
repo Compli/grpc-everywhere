@@ -16,6 +16,8 @@ class Service {
     constructor(name, config) {
         this.name = name;
 
+        console.log(config);
+
         if (!fs.existsSync(config.protoFile)) {
             throw new Error(`${config.protoFile} proto file doesn't exists`);
         }
@@ -23,8 +25,6 @@ class Service {
         let proto = grpc.load(config.protoFile);
 
         this.description = new ServiceDescription(config.service, proto);
-
-        this.logger = createLogger(this.name, config.logs);
 
         this.connector = createConnector(config.connector.name, config.connector.options, this.logger);
 
