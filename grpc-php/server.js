@@ -1,9 +1,7 @@
-#!/usr/bin/env node
-
 "use strict";
 
 const yargs = require('yargs');
-const Server = require('../src/Server');
+const Server = require('src/Server');
 
 let argv = yargs.usage('Usage: $0 -c [configPath]')
     .option('c', {
@@ -15,7 +13,7 @@ let argv = yargs.usage('Usage: $0 -c [configPath]')
     .help('h')
     .alias('h', 'help').argv;
 
-const loadConfig = require('../src/loadConfig');
+const loadConfig = require('src/loadConfig');
 
 let config = loadConfig(argv.config);
 

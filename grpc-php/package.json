@@ -1,19 +1,19 @@
 {
-  "name": "grpc-everywhere",
-  "version": "0.0.3",
-  "description": "GRPC server for everywehre and everyone",
+  "name": "grpc-php",
+  "version": "1.0.0",
+  "description": "GRPC server for PHP.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shumkov/grpc-everywhere.git"
+    "url": ""
   },
-  "main": ".bin/server.js",
+  "main": "server.js",
   "bin": {
-    "grpc-everywhere": "./bin/server.js"
+    "grpc-php": "server.js"
   },
-  "author": "Ivan Shumkov <ivan@shumkov.ru>",
+  "author": "Shane Jeffery",
   "license": "MIT",
   "engines": {
-    "node": "=>4.4.7"
+    "node": "=>9.3.0"
   },
   "dependencies": {
     "asciify": "^1.3.5",

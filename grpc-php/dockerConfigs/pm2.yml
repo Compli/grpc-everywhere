@@ -1,0 +1,13 @@
+apps:
+  - name: grpc-php
+    script: /usr/local/lib/node_modules/grpc-php/server.js
+    cwd: /
+    instances: 1
+    max_memory_restart: 1G
+    args: "-c /etc/grpc-php/server.yml"
+    error_file: /var/log/grpc-php/pm2.error.log
+    out_file: /var/log/grpc-php/pm2.out.log
+    combine_logs: true
+    exec_mode: cluster
+    kill_timeout: 10000
+    restart_delay: 5000
