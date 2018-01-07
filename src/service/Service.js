@@ -8,15 +8,9 @@ const createConnector = require('./connector/createConnector');
 const createLogger = require('./createLogger');
 
 class Service {
-    /**
-     *
-     * @param {string} name
-     * @param {Object} config
-     */
+
     constructor(name, config) {
         this.name = name;
-
-        console.log(config);
 
         if (!fs.existsSync(config.protoFile)) {
             throw new Error(`${config.protoFile} proto file doesn't exists`);

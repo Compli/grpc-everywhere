@@ -13,11 +13,8 @@ const fastCgiConnector = require('fastcgi-client');
 const ipAddress = ip.address();
 
 class FastCgiConnector {
-    /**
-     * @param {Object} config
-     * @param {winston.Logger} logger
-     */
-    constructor(config, logger) {
+
+    constructor(config) {
         this.config = Object.assign({}, config);
 
         this.config.script = FastCgiConnector.normalizeScriptPath(this.config.script);
@@ -31,7 +28,7 @@ class FastCgiConnector {
         });
 
         this.client.on('error', (error) => {
-            logger.error(error);
+            console.log(error);
         });
 
         this.lastRequestPromise = null;

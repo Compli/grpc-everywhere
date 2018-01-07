@@ -51,7 +51,7 @@ class ServiceDescription {
 
         let baseDescription = {
             packageName: this.packageName,
-            serviceName: service.name,
+            serviceName: ServiceDescription.getBaseServiceName(this.serviceName),
         };
 
         let methods = [];
@@ -79,6 +79,11 @@ class ServiceDescription {
         serviceChunks.pop();
 
         return serviceChunks.join('.');
+    }
+
+    static getBaseServiceName(serviceName) {
+        let serviceChunks = serviceName.split('.');
+        return serviceChunks[serviceChunks.length - 1]
     }
 }
 
