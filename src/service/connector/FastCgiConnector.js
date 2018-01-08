@@ -19,6 +19,7 @@ class FastCgiConnector {
 
         this.config.script = FastCgiConnector.normalizeScriptPath(this.config.script);
         this.config.skipCheckServer = true;
+        this.config.host = process.env.FASTCGI_CONNECTOR_HOST;
 
         this.client = fastCgiConnector(this.config);
 

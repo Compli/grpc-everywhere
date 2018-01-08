@@ -5,5 +5,3 @@ connector:
   name: FastCgi
   options:
     script: /code/example/test/test.php
-    host: php-fpm
-    port: '9000'
