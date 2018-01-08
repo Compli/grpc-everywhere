@@ -4,5 +4,6 @@ service: test.greeter.Greeter
 connector:
   name: FastCgi
   options:
-    script: /code/example/test.php
-host: php
+    script: /code/example/test/test.php
+    host: php-fpm
+    port: '9000'

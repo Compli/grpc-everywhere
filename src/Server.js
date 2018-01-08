@@ -70,7 +70,7 @@ class Server {
                 Promise.all(lastsRequestsPromise).then(resolve, resolve);
             });
         }).catch((error) => {
-            this.logger.error(error);
+            console.log(error);
 
             throw error;
         });

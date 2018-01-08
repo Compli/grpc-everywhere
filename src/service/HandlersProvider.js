@@ -29,7 +29,6 @@ class HandlersProvider {
         return (call, callback) => {
             let startTime = process.hrtime();
 
-            console.log(methodDescription);
 
             let promise = this.connector.send(
                 methodDescription,
@@ -66,7 +65,7 @@ class HandlersProvider {
                     methodDescription.methodName
                 ].join('.');
 
-                this.logger.info(`Serve ${requestDescriptor}`, {
+                console.log(`Serve ${requestDescriptor}`, {
                     elapsedTime: HandlersProvider.getElapsedTimeInMs(startTime),
                     packageName: methodDescription.packageName,
                     serviceName: methodDescription.serviceName,

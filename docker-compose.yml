@@ -24,7 +24,8 @@ services:
   php-fpm:
     image: php:7.1.10-fpm
     volumes:
-      - ./:/var/www/html
+      # - ./:/var/www/html
+      - ./:/code
       - ./config/php.ini:/usr/local/etc/php/php.ini
       - ./config/php-fpm.conf:/usr/local/etc/php-fpm.conf
     entrypoint:
