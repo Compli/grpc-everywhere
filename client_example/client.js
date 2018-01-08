@@ -2,7 +2,7 @@
 
 const grpc = require('grpc');
 
-const user = grpc.load('./user.proto').user;
+const user = grpc.load('./protos/user.proto').user;
 const client = new user.UserService('localhost:50051', grpc.credentials.createInsecure());
 
 client.getUser({id: 1234}, function(error, response) {
