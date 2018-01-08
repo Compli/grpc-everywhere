@@ -3,10 +3,9 @@
 const grpc = require('grpc');
 
 class HandlersProvider {
-    constructor(serviceDescription, connector, logger) {
+    constructor(serviceDescription, connector) {
         this.serviceDescription = serviceDescription;
         this.connector = connector;
-        this.logger = logger;
     }
 
     getHandlers() {
@@ -57,8 +56,6 @@ class HandlersProvider {
                     value = response.message
                 }
 
-                console.log(value);
-
                 callback(error, value, metadata);
 
                 let requestDescriptor = [
@@ -74,15 +71,8 @@ class HandlersProvider {
                     methodName: methodDescription.methodName
                 });
             }).catch((error) => {
-
                 console.log(error);
                 console.log(methodDescription);
-
-                // this.logger.error(error, {
-                //     packageName: methodDescription.packageName,
-                //     serviceName: methodDescription.serviceName,
-                //     methodName: methodDescription.methodName
-                // });
 
                 callback(error);
             });

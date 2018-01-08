@@ -30,8 +30,6 @@ class ServiceDescription {
             }
         }
 
-        console.log(node);
-
         return node;
     }
 

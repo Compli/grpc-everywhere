@@ -3,12 +3,11 @@
 const fs = require('fs');
 
 /**
- * @param {string} name
- * @param {Object} config
- * @param {Logger} logger
- * @return {FastCgiConnector}
+ *
+ * @param name
+ * @param config
  */
-function createConnector(name, config, logger) {
+function createConnector(name, config) {
     let connectorFile;
     for (let filePath of [`${__dirname}/${name}Connector`, name]) {
         if (fs.existsSync(`${filePath}.js`)) {
@@ -23,7 +22,7 @@ function createConnector(name, config, logger) {
 
     const Connector = require(connectorFile);
 
-    return new Connector(config, logger);
+    return new Connector(config);
 }
 
 module.exports = createConnector;
