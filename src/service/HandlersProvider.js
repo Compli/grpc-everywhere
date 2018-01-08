@@ -1,13 +1,16 @@
-"use strict";
-
 const grpc = require('grpc');
 
 class HandlersProvider {
+
     constructor(serviceDescription, connector) {
         this.serviceDescription = serviceDescription;
         this.connector = connector;
     }
 
+    /**
+     *
+     * @returns {{}}
+     */
     getHandlers() {
         let handlers = {};
 
@@ -24,6 +27,13 @@ class HandlersProvider {
         return handlers;
     }
 
+    /**
+     * Sends the request from gRPC to PHP via FastCGI and then sends the response back to the gRPC
+     * server so it can send back the response to the client.
+     *
+     * @param methodDescription
+     * @returns {function(*, *)}
+     */
     createUnaryHandler(methodDescription) {
         return (call, callback) => {
             let startTime = process.hrtime();
@@ -80,8 +90,9 @@ class HandlersProvider {
     }
 
     /**
+     * Figures out how long the call took to go through FastCGI -> PHP and back.
      *
-     * @param {Array} timeStart result of hrtime
+     * @param {Array} timeStart
      * @param precision
      * @returns {string}
      */
@@ -93,6 +104,11 @@ class HandlersProvider {
         return ((elapsedTime[0] * 1e9 + elapsedTime[1]) / 1e6).toFixed(precision);
     }
 
+    /**
+     *
+     * @param name
+     * @returns {string}
+     */
     static methodNameToHandlerName(name) {
         return name.charAt(0).toLocaleLowerCase() + name.slice(1)
     }

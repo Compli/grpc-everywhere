@@ -29,7 +29,7 @@ class FastCgiConnector {
         });
 
         this.client.on('error', (error) => {
-            console.log(error);
+            console.log                                                                                                                                                        (error);
         });
 
         this.lastRequestPromise = null;

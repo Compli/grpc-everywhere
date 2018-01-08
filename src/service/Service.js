@@ -1,5 +1,3 @@
-"use strict";
-
 const fs = require('fs');
 const grpc = require('grpc');
 const HandlersProvider = require('./HandlersProvider');
@@ -7,7 +5,6 @@ const ServiceDescription = require('./ServiceDescription');
 const createConnector = require('./connector/createConnector');
 
 class Service {
-
     constructor(name, config) {
         this.name = name;
 
