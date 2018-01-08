@@ -1,15 +1,22 @@
-# GRPC Everywhere
-GRPC server for everywhere and everyone.
+## gRPC for PHP
 
-Documentation will be soon.
+Original concept design by: https://github.com/shumkov
+Project now maintained by: Shane Jeffery ()https://github.com/CompTrain) & David Amick (https://github.com/snarlysodboxer)
 
-Please check:
- - `example` dir.
- - [GRPC Everywhere for PHP](https://github.com/shumkov/grpc-everywhere-php)
+### Explanation
 
-## MIT License
 
-Copyright (c) 2016 Ivan Shumkov
+### Setup
+
+
+
+### Issues / Questions / Concerns
+
+David and I (Shane) are actively looking for ways to make this project better.  If you have further ideas on how to optimize / beautify, please let us know either through an issue or creating your own PR for the changes and tagging both of us for review.
+
+### MIT License
+
+Copyright (c) 2016-2018 Ivan Shumkov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
