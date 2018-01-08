@@ -3,13 +3,9 @@
 const Server = require('./src/Server');
 const loadConfig = require('./src/loadConfig');
 
-let config = loadConfig('config.yml');
+let servicesConfig = loadConfig('services.yml');
 
-if (!Array.isArray(config)) {
-    config = [config];
-}
-
-let server = new Server(config);
+let server = new Server(servicesConfig.services);
 server.start();
 
 process.on('SIGINT', function() {

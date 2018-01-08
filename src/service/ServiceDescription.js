@@ -1,18 +1,11 @@
-"use strict";
-
 require('object.values').shim();
 
 class ServiceDescription {
     constructor(serviceName, proto) {
-
-        console.log(serviceName);
-
         this.proto = proto;
         this.serviceName = serviceName;
-
-
-        this.service = null;
         this.packageName = ServiceDescription.getPackageNameOfService(serviceName);
+        this.service = null;
     }
 
     getService() {
@@ -34,14 +27,10 @@ class ServiceDescription {
         for (let chunk of chunks) {
             if (node.hasOwnProperty(chunk)) {
                 node = node[chunk];
-            } else {
-                throw new Error('Invalid service name');
             }
         }
 
-        if (node.name !== 'ServiceClient') {
-            throw new Error('Service "' + serviceName + '" are not a service');
-        }
+        console.log(node);
 
         return node;
     }

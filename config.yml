@@ -1,7 +1,0 @@
-name: test
-protoFile: /code/protos/test.proto
-service: test.greeter.Greeter
-connector:
-  name: FastCgi
-  options:
-    script: /code/example/test/test.php

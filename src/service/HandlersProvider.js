@@ -57,6 +57,8 @@ class HandlersProvider {
                     value = response.message
                 }
 
+                console.log(value);
+
                 callback(error, value, metadata);
 
                 let requestDescriptor = [
