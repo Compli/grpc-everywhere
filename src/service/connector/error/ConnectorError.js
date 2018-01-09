@@ -1,5 +1,3 @@
-"use strict";
-
 const ExtendableError = require('es6-error');
 
 class ConnectorError extends ExtendableError {

@@ -1,21 +1,11 @@
-"use strict";
-
 const grpc = require('grpc');
-const winston = require('winston');
-const asciify = require('asciify');
-
 const Service = require('./service/Service');
 
 class Server {
-    /**
-     * @param {Object} config
-     */
+
     constructor(config) {
-
         this.config = config;
-
         this.grpcServer = new grpc.Server();
-
         this.services = [];
 
         for (let serviceConfig of this.config) {
@@ -24,9 +14,9 @@ class Server {
     }
 
     /**
-     * Start server
+     * Startup the gRPC server.
      *
-     * @returns {Promise}
+     * @returns {Promise.<TResult>}
      */
     start() {
         let connectionString = `${process.env.GRPC_HOST}:${process.env.GRPC_PORT}`;
@@ -49,16 +39,16 @@ class Server {
 
             console.log(`GRPC Loaded Services:\n${servicesString}\n`);
         }).catch((error) => {
-            this.logger.error(error);
+            console.log(error);
         });
     }
 
     /**
-     * Stop the server
+     * Stop the gRPC server.
      *
-     * @returns {Promise}
+     * @returns {Promise.<T>}
      */
-    stop() {
+    async stop() {
         return new Promise((resolve) => {
             this.grpcServer.tryShutdown(() => {
                 let lastsRequestsPromise = this.services.map((service) => {
@@ -71,14 +61,14 @@ class Server {
             });
         }).catch((error) => {
             console.log(error);
-
             throw error;
         });
     }
 
     /**
-     * @param {Service} service
-     * @returns {FastCgiConnector}
+     * Add the based service to the gRPC server.
+     *
+     * @param service
      */
     addService(service) {
         this.grpcServer.addService(

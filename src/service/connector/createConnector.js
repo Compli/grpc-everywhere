@@ -1,12 +1,5 @@
-"use strict";
-
 const fs = require('fs');
 
-/**
- *
- * @param name
- * @param config
- */
 function createConnector(name, config) {
     let connectorFile;
     for (let filePath of [`${__dirname}/${name}Connector`, name]) {
