@@ -1,0 +1,14 @@
+{
+  "name": "test-grpc-php",
+  "version": "1.0.0",
+  "description": "test the the gRPC server for PHP.",
+  "engines": {
+    "node": "=>9.2.0"
+  },
+  "dependencies": {
+    "death": "^1.1.0",
+    "grpc": "^1.8.0",
+    "grpc-php-adapter": "file:/code/",
+    "nodemon": "^1.14.11"
+  }
+}

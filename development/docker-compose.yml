@@ -1,0 +1,26 @@
+version: '2.1'
+services:
+  node:
+    image: node:9.3.0
+    entrypoint:
+      - node_modules/.bin/nodemon
+    command:
+      - server.js
+    working_dir: /code/development
+    volumes:
+      - ../:/code
+    links:
+      - php-fpm
+    depends_on:
+      - php-fpm
+  php-fpm:
+    image: php:7.1.10-fpm
+    working_dir: /code/development
+    volumes:
+      - ../:/code
+      - ./config/php.ini:/usr/local/etc/php/php.ini
+      - ./config/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    entrypoint:
+      - php-fpm
+    command: []
+

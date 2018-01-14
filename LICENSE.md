@@ -1,6 +1,7 @@
 ### MIT License
 
-Copyright (c) 2016-2018 Ivan Shumkov
+Original work Copyright (c) 2016-2018 Ivan Shumkov
+Modified work Copyright (c) 2018 Compli.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

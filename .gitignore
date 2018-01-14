@@ -3,5 +3,4 @@ npm-debug.log
 */*/.DS_Store*
 .idea/
 .env
-generated/
 .composer/

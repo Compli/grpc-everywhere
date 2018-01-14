@@ -6,7 +6,7 @@ This is a significantly modified fork of https://github.com/shumkov/grpc-everywh
 
 PHP is not built to run as a standalone daemon, therefore there is no support for PHP gRPC servers.
 
-We can run a reusable Node.js server to receive gRPC requests, and through FastCGI, pass them to PHP and return the responses. This does not get us all the advantages of gRPC, (no streaming support, and requests still have to be JSON encoded and decoded,) however it does allow us to write PHP "servers" which can later easily be replaced with servers written in other languages.
+We can run a reusable Node.js server to receive gRPC requests, and through FastCGI, pass them to PHP and return the responses. This does not get us all the advantages of gRPC, (no streaming support, and requests still have to be JSON encoded and decoded,) however it does allow us to write PHP "servers" which can later easily be replaced with servers written in other languages. It also gets us strong API typing and allows us to converge on Proto files for API definitions and documentation.
 
 ### Current Status
 
@@ -49,8 +49,6 @@ ON_DEATH(function(signal, err) {
 })
 ```
 
-
-
 ### Development (using Docker and Docker Compose)
 
 _Contributions are welcome!_
@@ -59,7 +57,7 @@ _Contributions are welcome!_
 2. Run `./bin/local/npm.sh install` to install the NPM modules
 3. Run `docker-compose up`
 4. Make changes to the code (and test-client if needed,) [nodemon](https://www.npmjs.com/package/nodemon) should pick up your changes and restart the server.
-5. Run `./bin/local/test-client.sh` which will execute `node test-client.js` inside the Node.js container.
+5. Run `docker-compose run --rm --entrypoint node node test-client.js` to execute the test client.
 
-_If you decide to add a NPM package, use `./bin/loca/npm.sh install <package>` to do it through Docker_
+_If you decide to add a NPM package, use `./bin/loca/npm.sh install <package>` to do it through Docker. This way the modules will be sure to compiled to successfully run in Docker._
 
