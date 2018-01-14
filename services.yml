@@ -1,8 +1,0 @@
-services:
-  - name: user
-    protoFile: /code/protos/user.proto
-    service: user.UserService
-    connector:
-      name: FastCgi
-      options:
-        script: /code/php/user.php
