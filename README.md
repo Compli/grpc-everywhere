@@ -65,5 +65,5 @@ _Contributions are welcome!_
 4. Make changes to the code (and test-client if needed,) [nodemon](https://www.npmjs.com/package/nodemon) should pick up your changes and restart the server.
 5. Run `docker-compose run --rm --entrypoint node node test-client.js` to execute the test client.
 
-_If you decide to add a NPM package, use `./bin/loca/npm.sh install <package>` from the root of the repo to do it through Docker. This way the modules will be compiled for the right architecture to run in Docker._
+_If you decide to add a NPM package, use `./bin/loca/npm.sh install <package>` from the root of the repo to do so through Docker. This way the modules will be compiled for the right architecture to run in Docker._
 
