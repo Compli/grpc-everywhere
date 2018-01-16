@@ -16,14 +16,14 @@ let serviceOptions = {
     protoFile: './protos/user.proto',
     phpEntrypoint: './public/user.php',
     fastCGIOptions: { // https://www.npmjs.com/package/fastcgi-client
-        host: 'php-fpm', // where to reach PHP-FPM
+        host: 'php-fpm', // Where to reach PHP-FPM
         port: '9000'
     }
 }
 let service = new grpcPHPAdapter.Service(serviceOptions);
 server.addService(service); // Repeat for each protobuf service as needed
 
-server.start('0.0.0.0:50051');
+server.start('0.0.0.0:50051'); // Where to listen for gRPC requests
 
 ON_DEATH(function(signal, err) {
     server.stop().then(() => {
