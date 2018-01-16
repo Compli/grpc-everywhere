@@ -21,6 +21,12 @@ _We use PHP-FPM to receive FastCGI requests and run PHP_
 
 const grpcPHPAdapter = require('grpc-php-adapter');
 const ON_DEATH = require('death');
+const bole = require('bole'); // enable logging, see: https://github.com/rvagg/bole
+
+bole.output({
+  level: 'info',
+  stream: process.stdout
+});
 
 let server = new grpcPHPAdapter.Server();
 

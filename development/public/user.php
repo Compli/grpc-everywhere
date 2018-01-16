@@ -9,3 +9,4 @@ $methodName = $_GET['methodName'];
 
 $userObject = new User();
 echo $userObject->$methodName($parsedBody);
+
