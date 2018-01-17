@@ -1,4 +1,7 @@
-server = require('./lib/server');
-exports.Server = server;
-service = require('./lib/service/Service');
-exports.Service = service;
+gRPCServer              = require('./lib/server');
+exports.Server          = gRPCServer;
+service                 = require('./lib/service/Service');
+exports.Service         = service;
+metricsServer           = require('./lib/metricsServer');
+exports.MetricsServer   = metricsServer;
+

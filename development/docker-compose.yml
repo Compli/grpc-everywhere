@@ -23,4 +23,21 @@ services:
     entrypoint:
       - php-fpm
     command: []
+  prometheus:
+    image: prom/prometheus:v1.7.1
+    command:
+      - --config.file
+      - /etc/prometheus/prometheus.yml
+      - --log.level
+      - warn
+      - --log.format
+      - logger:stdout?json=true
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+    links:
+      - node
+    depends_on:
+      - node
 
