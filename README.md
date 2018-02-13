@@ -22,7 +22,7 @@ _We use PHP-FPM to receive FastCGI requests and run PHP_
 const ON_DEATH          = require('death'); // Enable graceful shutdown
 const bole              = require('bole'); // Enable logging, see: https://github.com/rvagg/bole
 const log               = require('bole')('grpc-php-adapter');
-const grpcPHPAdapter    = require('grpc-php-adapter');
+const grpcPHPAdapter    = require('@compli/grpc-php-adapter');
 const gRPCServer        = new grpcPHPAdapter.Server();
 const metricsServer     = new grpcPHPAdapter.MetricsServer(); // Enable Prometheus metrics
 
