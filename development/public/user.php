@@ -8,5 +8,10 @@ $parsedBody = json_decode($bodyJson, true);
 $methodName = $_GET['methodName'];
 
 $userObject = new User();
-echo $userObject->$methodName($parsedBody);
+$response = [
+    'isSuccess' => true,
+    'message' => $userObject->$methodName($parsedBody)
+];
+
+echo json_encode($response);
 

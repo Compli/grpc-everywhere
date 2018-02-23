@@ -11,18 +11,15 @@ class User {
     {
         $userId = $parsedBody['id'];
 
-        return json_encode([
-            'isSuccess' => true,
-            'message' => [
-                'user' => [
-                    'id' => $userId,
-                    'email' => 'shane.jeffery@compli.com',
-                    'password' => 'boohoo123',
-                    'firstName' => 'Shane',
-                    'lastName' => 'Jeffery'
-                ]
-            ],
-        ]);
+        return [
+            'user' => [
+                'id' => $userId,
+                'email' => 'shane.jeffery@compli.com',
+                'password' => 'boohoo123',
+                'firstName' => 'Shane',
+                'lastName' => 'Jeffery'
+            ]
+        ];
     }
 
     public function getAllUsers()
