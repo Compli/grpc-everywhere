@@ -6,7 +6,7 @@ const log               = require('bole')('grpc-php-adapter');
 const grpcPHPAdapter    = require('@compli/grpc-php-adapter');
 const gRPCServer        = new grpcPHPAdapter.Server();
 const metricsServer     = new grpcPHPAdapter.MetricsServer(); // Enable Prometheus metrics
-// const healthzServer     = new grpcPHPAdapter.HealthzServer(); // Enable health checks // TODO
+const healthzServer     = new grpcPHPAdapter.HealthzServer(); // Enable Health checks
 
 
 // Logging
@@ -30,19 +30,16 @@ let service = new grpcPHPAdapter.Service(serviceOptions);
 gRPCServer.addService(service); // Repeat for each protobuf service as needed
 gRPCServer.start('0.0.0.0:50051'); // Where to listen for gRPC requests
 
+// Health checks
+healthzServer.start('0.0.0.0:4000', serviceOptions.fastCGIOptions); // Where to listen for Health check requests
 
 // Prometheus Metrics
 metricsServer.start('0.0.0.0:3000', '/metrics'); // Where to listen for Prometheus requests
 
-
-// // Health checks
-// healthzServer.start('0.0.0.0:8080', '/metrics');
-
-
 // Graceful shutdown
 ON_DEATH(function(signal, err) {
     metricsServer.stop();
-    // healthzServer.stop();
+    healthzServer.stop();
     gRPCServer.stop().then(() => {
         log.info(`Received ${signal} and shutdown the gRPC server`);
         process.exit();

@@ -9,8 +9,6 @@ services:
     working_dir: /code/development
     volumes:
       - ../:/code
-    links:
-      - php-fpm
     depends_on:
       - php-fpm
   php-fpm:
@@ -36,8 +34,6 @@ services:
       - "127.0.0.1:9090:9090"
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
-    links:
-      - node
     depends_on:
       - node
 

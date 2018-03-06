@@ -6,9 +6,9 @@
     "node": "=>9.2.0"
   },
   "dependencies": {
+    "@compli/grpc-php-adapter": "file:/code/",
     "death": "^1.1.0",
     "grpc": "^1.8.0",
-    "@compli/grpc-php-adapter": "file:/code/",
     "nodemon": "^1.14.11"
   }
 }
