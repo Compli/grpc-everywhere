@@ -1,6 +1,6 @@
 {
   "name": "@compli/grpc-php-adapter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "gRPC to FastCGI adapter for PHP",
   "keywords": [
     "gRPC",
